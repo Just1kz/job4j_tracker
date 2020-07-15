@@ -9,6 +9,9 @@ public class ConsoleInput implements  Input {
     public ConsoleInput(InputStream in) {
     }
 
+    public ConsoleInput() {
+    }
+
     @Override
     public String askStr(String question) {
         System.out.print(question);
