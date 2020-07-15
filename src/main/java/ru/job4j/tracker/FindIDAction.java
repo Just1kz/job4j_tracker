@@ -17,7 +17,7 @@ public class FindIDAction implements UserAction{
         int id = Integer.parseInt(input.askStr("Enter id: "));
          Item item = tracker.findById(id);
          if (item != null) {
-             out.println(item);
+             out.println(item);;
          } else {
              out.println("Ошибка при вводе данных, ID не существует. Требуется повторить операцию с вводом корректных данных");
          }

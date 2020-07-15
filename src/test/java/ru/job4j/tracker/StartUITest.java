@@ -123,6 +123,7 @@ public class StartUITest {
         assertThat(out.toString(), is("Menu." + LN
                 + "0. === Find by Id ====" + LN
                 + "1. === Exit Menu ===" + LN
+                + item + LN
                 + "Menu." + LN
                 + "0. === Find by Id ====" + LN
                 + "1. === Exit Menu ===" + LN ));
@@ -144,6 +145,7 @@ public class StartUITest {
         assertThat(out.toString(), is("Menu." + LN
                 + "0. === Find by Name ====" + LN
                 + "1. === Exit Menu ===" + LN
+                + item + LN
                 + "Menu." + LN
                 + "0. === Find by Name ====" + LN
                 + "1. === Exit Menu ===" + LN ));
