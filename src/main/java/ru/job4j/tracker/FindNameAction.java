@@ -18,10 +18,10 @@ public class FindNameAction implements UserAction{
          Item[] showAllNameSearch = tracker.findByName(name);
          if (showAllNameSearch.length > 0) {
              for (int i = 0; i < showAllNameSearch.length; i++) {
-                 System.out.println(showAllNameSearch[i]);
+                 out.println(showAllNameSearch[i]);
              }
          } else {
-             System.out.println("Ошибка при вводе данных, Имя заявки не существует. Требуется повторить операцию с вводом корректных данных");
+             out.println("Ошибка при вводе данных, Имя заявки не существует. Требуется повторить операцию с вводом корректных данных");
          }
         return true;
     }

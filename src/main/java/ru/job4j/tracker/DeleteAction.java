@@ -15,14 +15,12 @@ public class DeleteAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        boolean rsl = true;
         int id = Integer.parseInt(input.askStr("Enter id: "));
          if (tracker.delete(id)) {
-             System.out.println("delete completed");
+             out.println("delete completed");
          } else {
-             System.out.println("Ошибка при вводе данных, ID не существует. Требуется повторить операцию с вводом корректных данных");
-             rsl = false;
+             out.println("Ошибка при вводе данных, ID не существует. Требуется повторить операцию с вводом корректных данных");
          }
-        return rsl;
+        return true;
     }
 }
