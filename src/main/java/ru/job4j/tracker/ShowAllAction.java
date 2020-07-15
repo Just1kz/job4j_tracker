@@ -8,7 +8,6 @@ public class ShowAllAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        boolean rsl = true;
         Item[] showAll = tracker.findAll();
          if (showAll.length > 0) {
              for (int i = 0; i < showAll.length; i++) {
@@ -16,8 +15,7 @@ public class ShowAllAction implements UserAction{
              }
          } else {
              System.out.println("Store is empty.");
-             rsl = false;
          }
-        return rsl;
+        return true;
     }
 }

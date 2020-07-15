@@ -19,10 +19,9 @@ public class EditAction implements UserAction{
          String name = input.askStr("Enter name, what you want replace: ");
          Item item = new Item(name);
          if (tracker.replace(id, item)) {
-             System.out.println("replaces completed");
+             out.println("replaces completed");
          } else {
-             System.out.println("Ошибка при вводе данных, Имя заявки или ID не существует. Требуется повторить операцию с вводом корректных данных");
-             rsl = false;
+             out.println("Ошибка при вводе данных, Имя заявки или ID не существует. Требуется повторить операцию с вводом корректных данных");
          }
         return rsl;
     }
