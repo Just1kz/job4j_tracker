@@ -19,21 +19,19 @@ public class Tracker {
         return index != -1 ? items.get(index) : null;
     }
 
-    public ArrayList[] findByName(String key) {
+    public ArrayList<Item> findByName(String key) {
         ArrayList<Item> findName = new ArrayList<Item>();
-        int count = 0;
         for (int index = 0; index < size; index++) {
             Item item = items.get(index);
             if (item.getName().equals(key)) {
-                findName.set(count, items.get(index));
-                count += 1;
+                findName.add(items.get(index));
             }
         }
-        return Arrays.copyOf(new ArrayList[]{findName}, count);
+        return findName;
     }
 
-    public ArrayList[] findAll() {
-        return Arrays.copyOf(new ArrayList[]{items}, size);
+    public ArrayList<Item> findAll() {
+        return items;
     }
 
     private int indexOf(int id) {
@@ -59,13 +57,7 @@ public class Tracker {
     public boolean delete(int id) {
         int index = indexOf(id);
         if (index != -1) {
-        items.set(index, null);
-        int start = index + 1;
-        int distPos = index;
-        int countCopy = size - index;
-        System.arraycopy(items, start, items, distPos, countCopy);
-        items.set(size - 1, null);
-        size--;
+        items.remove(index);
         }
         return index != -1;
     }
