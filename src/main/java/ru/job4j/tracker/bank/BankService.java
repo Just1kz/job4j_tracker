@@ -14,8 +14,7 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        User rsl = null;
-        rsl = findByPassport(passport);
+        User rsl = findByPassport(passport);
         if (rsl != null && !users.get(rsl).contains(account)) {
             users.get(rsl).add(account);
         }
@@ -33,8 +32,7 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        User user = null;
-        user = findByPassport(passport);
+        User user = findByPassport(passport);
         Account rsl = null;
         if (user != null) {
             for (Account accounts : users.get(user)) {
