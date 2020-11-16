@@ -1,12 +1,10 @@
 package ru.job4j.tracker.collection;
 
-import ru.job4j.tracker.Item;
-
 import java.util.Objects;
 
-public class User implements Comparable<User>{
+public class User implements Comparable<User> {
     private String name;
-    private int age;
+    private final int age;
 
     public User(String name, int age) {
         this.name = name;
@@ -21,14 +19,6 @@ public class User implements Comparable<User>{
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     @Override
     public int compareTo(User another) {
         int rsl = name.compareTo(another.name);
@@ -37,11 +27,15 @@ public class User implements Comparable<User>{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return age == user.age &&
-                Objects.equals(name, user.name);
+        return age == user.age
+                && Objects.equals(name, user.name);
     }
 
     @Override

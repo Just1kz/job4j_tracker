@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
-public class FindIDAction implements UserAction{
+import java.util.Objects;
+
+public class FindIDAction implements UserAction {
     private final Output out;
 
     public FindIDAction(Output out) {
@@ -16,11 +18,8 @@ public class FindIDAction implements UserAction{
     public boolean execute(Input input, Tracker tracker) {
         int id = Integer.parseInt(input.askStr("Enter id: "));
          Item item = tracker.findById(id);
-         if (item != null) {
-             out.println(item);
-         } else {
-             out.println("Ошибка при вводе данных, ID не существует. Требуется повторить операцию с вводом корректных данных");
-         }
+        out.println(Objects.requireNonNullElse(item, "Ошибка при вводе данных, ID не существует. "
+                + "Требуется повторить операцию с вводом корректных данных"));
         return true;
     }
 }

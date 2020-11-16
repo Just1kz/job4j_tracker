@@ -1,9 +1,8 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class FindNameAction implements UserAction{
+public class FindNameAction implements UserAction {
     private final Output out;
 
     public FindNameAction(Output out) {
@@ -20,11 +19,12 @@ public class FindNameAction implements UserAction{
          String name = input.askStr("Enter name to search: ");
          List<Item> showAllNameSearch = tracker.findByName(name);
          if (showAllNameSearch.size() > 0) {
-             for (int i = 0; i < showAllNameSearch.size(); i++) {
-                 out.println(showAllNameSearch.get(i));
+             for (Item allNameSearch : showAllNameSearch) {
+                 out.println(allNameSearch);
              }
          } else {
-             out.println("Ошибка при вводе данных, Имя заявки не существует. Требуется повторить операцию с вводом корректных данных");
+             out.println("Ошибка при вводе данных, Имя заявки не существует. "
+                     + "Требуется повторить операцию с вводом корректных данных");
          }
         return true;
     }

@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class EditAction implements UserAction{
+public class EditAction implements UserAction {
     private final Output out;
 
     public EditAction(Output out) {
@@ -20,7 +20,8 @@ public class EditAction implements UserAction{
          if (tracker.replace(id, item)) {
              out.println("replaces completed");
          } else {
-             out.println("Ошибка при вводе данных, Имя заявки или ID не существует. Требуется повторить операцию с вводом корректных данных");
+             out.println("Ошибка при вводе данных, Имя заявки или ID не существует. "
+                     + "Требуется повторить операцию с вводом корректных данных");
          }
         return true;
     }

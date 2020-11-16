@@ -1,9 +1,8 @@
 package ru.job4j.tracker.collection;
 
-public class Job implements Comparable<Job>{
-    private String name;
-
-    private int priority;
+public class Job implements Comparable<Job> {
+    private final String name;
+    private final int priority;
 
     public Job(String name, int priority) {
         this.name = name;
@@ -20,19 +19,18 @@ public class Job implements Comparable<Job>{
 
     @Override
     public String toString() {
-        return "Job{" +
-                "name='" + name + '\'' +
-                ", priority=" + priority +
-                '}';
+        return "Job{"
+                + "name='"
+                + name
+                + '\''
+                + ", priority="
+                + priority
+                + '}';
     }
 
     @Override
     public int compareTo(Job another) {
         return Integer.compare(priority, another.priority);
-    }
-
-    public int compareEndToBegin(Job another) {
-        return Integer.compare(another.priority, priority);
     }
 
 }

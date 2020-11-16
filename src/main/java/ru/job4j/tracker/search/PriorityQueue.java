@@ -1,10 +1,9 @@
 package ru.job4j.tracker.search;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class PriorityQueue {
-    private LinkedList<Task> tasks = new LinkedList<>();
+    private final LinkedList<Task> tasks = new LinkedList<>();
 
     /**
      * Метод должен вставлять в нужную позицию элемент.
@@ -18,11 +17,10 @@ public class PriorityQueue {
             if (task.getPriority() < element.getPriority()) {
                 break;
             }
-            index ++;
+            index++;
         }
             this.tasks.add(index, task);
         }
-
 
     public Task take() {
         return tasks.poll();
