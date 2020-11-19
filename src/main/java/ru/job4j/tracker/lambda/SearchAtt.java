@@ -19,7 +19,7 @@ public class SearchAtt {
                 return s.equals("Size");
             }
         };
-        String trigger = "Size";
+        String trigger = "else";
         return SearchAtt.filter(rsl, predicate, trigger);
     }
 
