@@ -3,6 +3,7 @@ package ru.job4j.tracker.lambda;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class SearchAtt {
     public static List<Attachment> filterSize(List<Attachment> list) {
@@ -12,7 +13,14 @@ public class SearchAtt {
                 rsl.add(att);
             }
         }
-        return rsl;
+        Predicate<String> predicate = new Predicate<String>() {
+            @Override
+            public boolean test(String s) {
+                return s.equals("Size");
+            }
+        };
+        String trigger = "Size";
+        return SearchAtt.filter(rsl, predicate, trigger);
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
@@ -22,26 +30,34 @@ public class SearchAtt {
                 rsl.add(att);
             }
         }
-        return rsl;
+        Predicate<String> predicate = new Predicate<String>() {
+            @Override
+            public boolean test(String s) {
+                return s.equals("Name");
+            }
+        };
+        String trigger = "Name";
+        return SearchAtt.filter(rsl, predicate, trigger);
     }
 
-    public static List<Attachment> filter(List<Attachment> list) {
-        Comparator<Attachment> cmpNameSize = new Comparator<Attachment>() {
-            @Override
-            public int compare(Attachment left, Attachment right) {
-                return left.getName().compareTo(right.getName());
-            }
-        }.thenComparing(
-                new Comparator<Attachment>() {
-                    @Override
-                    public int compare(Attachment left, Attachment right) {
-                        return left.getSize() - right.getSize();
-                    }
+    public static List<Attachment> filter(List<Attachment> list, Predicate<String> predicate, String trigger) {
+        if (predicate.test(trigger)) {
+            Comparator<Attachment> cmpName = new Comparator<Attachment>() {
+                @Override
+                public int compare(Attachment left, Attachment right) {
+                    return left.getName().compareTo(right.getName());
                 }
-        );
-        list.sort(cmpNameSize);
+            };
+            list.sort(cmpName);
+        } else  {
+            Comparator<Attachment> cmpSize =  new Comparator<Attachment>() {
+                @Override
+                public int compare(Attachment left, Attachment right) {
+                    return left.getSize() - right.getSize();
+                }
+            };
+            list.sort(cmpSize);
+        }
         return list;
     }
-//2. Выберите подходящий функциональный интерфейс из пакета java.util.function.
-//3. Создайте универсальный метод filter(...).
 }
