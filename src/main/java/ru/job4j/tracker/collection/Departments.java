@@ -5,19 +5,15 @@ import java.util.*;
 public class Departments {
     public static List<String> fillGaps(List<String> deps) {
         Set<String> tmp = new LinkedHashSet<>();
-        Set<String> tmp2 = new LinkedHashSet<>();
         for (String value : deps) {
             String start = "";
             for (String el : value.split("/")) {
                 start = start + el + "/";
-                tmp.add(start);
+                String rsl = start.substring(0, start.length() - 1);
+                tmp.add(rsl);
             }
         }
-        for (String rsl : tmp) {
-            String s = rsl.substring(0, rsl.length() - 1);
-            tmp2.add(s);
-        }
-        return new ArrayList<>(tmp2);
+        return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
