@@ -12,24 +12,14 @@ public class FI {
                 new Attachment("image 3", 120),
                 new Attachment("image 2", 23)
         };
-        Comparator<Attachment> comparator = new Comparator<Attachment>() {
-            @Override
-            public int compare(Attachment left, Attachment right) {
-                return left.getSize() - right.getSize();
-            }
-        };
+        Comparator<Attachment> comparator = (left, right) -> left.getSize() - right.getSize();
         Arrays.sort(atts, comparator);
 
         Student [] rsl = {new Student("Petr", 6.5),
                                         new Student("Anton", 5.5),
                                         new Student("Stas", 7.5)
         };
-        Comparator<Student> comparator2 = new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        };
+        Comparator<Student> comparator2 = (o1, o2) -> o1.getName().compareTo(o2.getName());
         Arrays.sort(rsl, comparator2);
 
         Function<Student, InputStream> func = new Function<Student, InputStream>() {
@@ -38,5 +28,11 @@ public class FI {
                 return null;
             }
         };
+        Comparator<String> cmpText = (left, right) -> {
+            System.out.println("compare - " + right + " : " + left);
+            return right.compareTo(left);
+        };
+        Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
+
     }
 }
