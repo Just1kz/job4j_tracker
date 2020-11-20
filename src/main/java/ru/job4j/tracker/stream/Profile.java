@@ -1,6 +1,7 @@
 package ru.job4j.tracker.stream;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -35,6 +36,8 @@ public class Profile {
                 || x.getAddress().getHome() !=0
                 || x.getAddress().getApartment() !=0)
                 .map(Profile::getAddress)
+                .sorted(Comparator.comparing(Address::getCity))
+                .distinct()
                 .collect(Collectors.toList());
         return rsl;
     }
