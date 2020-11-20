@@ -31,10 +31,7 @@ public class Profile {
 
     public List<Address> collect(List<Profile> profiles, Predicate<Profile> predicate) {
         List<Address> rsl = profiles.stream()
-                .filter(x -> x.getAddress().getCity() != null
-                || x.getAddress().getStreet() !=null
-                || x.getAddress().getHome() !=0
-                || x.getAddress().getApartment() !=0)
+                .filter(x -> x.getAddress() != null)
                 .map(Profile::getAddress)
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
