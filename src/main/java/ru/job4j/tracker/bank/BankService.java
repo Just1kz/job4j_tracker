@@ -5,8 +5,8 @@ import java.util.*;
 public class BankService {
     private final Map<Optional<User>, List<Account>> users = new HashMap<>();
 
-    public void addUser(Optional<User> user) {
-        users.putIfAbsent(user, new ArrayList<>());
+    public void addUser(User user) {
+        users.putIfAbsent(Optional.of(user), new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
