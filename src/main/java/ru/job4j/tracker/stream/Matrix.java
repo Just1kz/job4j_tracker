@@ -16,4 +16,10 @@ public class Matrix {
                 .collect(Collectors.toList());
         System.out.println(rsl);
     }
+
+    public static List<Integer> reMatrixToList(Integer[][] abc) {
+      return Arrays.stream(abc)
+              .flatMap(Arrays::stream)
+              .collect(Collectors.toList());
+    }
 }
