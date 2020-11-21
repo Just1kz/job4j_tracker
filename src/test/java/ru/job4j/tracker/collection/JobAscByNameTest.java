@@ -11,12 +11,12 @@ public class JobAscByNameTest {
 
     @Test
     public void compare() {
-        List<Job> itemStart = Arrays.asList(
+        List<Job> itemStart = List.of(
                 new Job("Bob", 1),
                 new Job("Jhon", 3),
                 new Job("Anton", 2)
         );
-        List<Job> itemEnd = Arrays.asList(
+        List<Job> itemEnd = List.of(
                 new Job("Anton", 2),
                 new Job("Bob", 1),
                 new Job("Jhon", 3)
