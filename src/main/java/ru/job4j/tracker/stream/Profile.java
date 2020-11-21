@@ -3,6 +3,7 @@ package ru.job4j.tracker.stream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -29,13 +30,33 @@ public class Profile {
         return address;
     }
 
-    public List<Address> collect(List<Profile> profiles, Predicate<Profile> predicate) {
-        List<Address> rsl = profiles.stream()
-                .filter(x -> x.getAddress() != null)
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                '}';
+    }
+
+    public static List<Address> collect(List<Profile> profiles) {
+        return profiles.stream()
                 .map(Profile::getAddress)
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
-        return rsl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profile profile = (Profile) o;
+        return Objects.equals(address, profile.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address);
     }
 }
