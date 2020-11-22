@@ -3,25 +3,25 @@ package ru.job4j.tracker.bank;
 import java.util.*;
 
 public class BankService {
-    private final Map<Optional<User>, List<Account>> users = new HashMap<>();
+    private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        users.putIfAbsent(Optional.of(user), new ArrayList<>());
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
         Optional<User> rsl = findByPassport(passport);
-        if (rsl.isPresent() && !users.get(rsl).contains(account)) {
-            users.get(rsl).add(account);
+        if (rsl.isPresent() && !users.get(rsl.get()).contains(account)) {
+            users.get(rsl.get()).add(account);
         }
     }
 
     public Optional<User> findByPassport(String passport) {
         Optional<User> rsl = Optional.empty();
-        for (Optional<User> user : users.keySet()) {
-            if (user.isPresent()) {
-                if (user.get().getPassport().equals(passport)) {
-                    rsl = user;
+        for (User user : users.keySet()) {
+            if (user!=null) {
+                if (user.getPassport().equals(passport)) {
+                    rsl = Optional.of(user);
                     break;
                 }
             }
@@ -33,7 +33,7 @@ public class BankService {
         Optional<User> user = findByPassport(passport);
         Optional<Account> rsl = Optional.empty();
         if (user.isPresent()) {
-            rsl = Optional.of(users.get(user).stream()
+            rsl = Optional.of(users.get(user.get()).stream()
                     .filter(x -> x.getRequisite().equals(requisite))
                     .findFirst()
                     .orElse(new Account("aasd", 123.00)));
