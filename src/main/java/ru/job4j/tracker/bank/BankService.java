@@ -33,10 +33,9 @@ public class BankService {
         Optional<User> user = findByPassport(passport);
         Optional<Account> rsl = Optional.empty();
         if (user.isPresent()) {
-            rsl = Optional.of(users.get(user.get()).stream()
+            rsl = users.get(user.get()).stream()
                     .filter(x -> x.getRequisite().equals(requisite))
-                    .findFirst()
-                    .orElse(new Account("aasd", 123.00)));
+                    .findFirst();
         }
         return rsl;
     }
