@@ -13,17 +13,17 @@ public class JobDescByPriorityTest {
 
     @Test
     public void compare() {
-        List<Job> itemStart = List.of(
+        List<Job> itemStart = new java.util.ArrayList<>(List.of(
                 new Job("Bob", 1),
                 new Job("Jhon", 3),
                 new Job("Anton", 2)
-        );
+        ));
         List<Job> itemEnd = List.of(
                 new Job("Jhon", 3),
                 new Job("Anton", 2),
                 new Job("Bob", 1)
         );
-        Collections.sort(itemStart, new JobDescByPriority());
+        itemStart.sort(new JobDescByPriority());
         assertThat(String.valueOf(itemStart), is(String.valueOf(itemEnd)));
     }
 }
