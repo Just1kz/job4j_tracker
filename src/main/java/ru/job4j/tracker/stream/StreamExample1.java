@@ -7,8 +7,9 @@ import java.util.stream.Collectors;
 
 public class StreamExample1 {
     public static void main(String[] args) {
-        List<Integer> start = Arrays.asList(-5,0,3,7,-1,-10,9,-15);
-        List<Integer> rsl = start.stream().filter(number -> number > 0).collect(Collectors.toList());
+        List<Integer> start = Arrays.asList(-5, 0, 3, 7, -1, -10, 9, -15);
+        List<Integer> rsl = start.stream().filter(number -> number > 0)
+                .collect(Collectors.toList());
         System.out.println(start);
         System.out.println(rsl);
     }

@@ -70,8 +70,8 @@ public class SchoolTest {
         students2.add(new Student(40, "Surname3"));
         students2.add(new Student(50, "Surname1"));
         Map<String, Student> expected = new HashMap<>();
-        Student st1 = new Student(40,"Surname3");
-        Student st2 = new Student(50,"Surname1");
+        Student st1 = new Student(40, "Surname3");
+        Student st2 = new Student(50, "Surname1");
         expected.put(st1.getSurname(), st1);
         expected.put(st2.getSurname(), st2);
         Map<String, Student> rsl = School.listToMap(students2);

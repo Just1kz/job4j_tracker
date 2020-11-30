@@ -32,11 +32,15 @@ public class Profile {
 
     @Override
     public String toString() {
-        return "Profile{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address=" + address +
-                '}';
+        return "Profile{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", address="
+                + address
+                + '}';
     }
 
     public static List<Address> collect(List<Profile> profiles) {
@@ -49,8 +53,12 @@ public class Profile {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Profile profile = (Profile) o;
         return Objects.equals(address, profile.address);
     }

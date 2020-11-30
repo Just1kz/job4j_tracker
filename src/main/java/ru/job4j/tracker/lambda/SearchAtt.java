@@ -40,7 +40,8 @@ public class SearchAtt {
         return SearchAtt.filter(rsl, predicate, trigger);
     }
 
-    public static List<Attachment> filter(List<Attachment> list, Predicate<String> predicate, String trigger) {
+    public static List<Attachment> filter(List<Attachment> list,
+                                          Predicate<String> predicate, String trigger) {
         if (predicate.test(trigger)) {
             Comparator<Attachment> cmpName = new Comparator<Attachment>() {
                 @Override

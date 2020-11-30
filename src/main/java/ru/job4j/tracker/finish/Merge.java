@@ -1,4 +1,4 @@
-package ru.job4j.tracker.rslTaskOfLvl1;
+package ru.job4j.tracker.finish;
 
 public class Merge {
     public static int[] merge(int[] left, int[] right) {
@@ -8,7 +8,8 @@ public class Merge {
         int rslPoint = 0;
         while (leftPoint + rightPoint != rsl.length) {
             if (leftPoint != left.length && rightPoint != right.length) {
-                rsl[rslPoint++] = left[leftPoint] < right[rightPoint] ? left[leftPoint++] : right[rightPoint++];
+                rsl[rslPoint++] = left[leftPoint] < right[rightPoint]
+                        ? left[leftPoint++] : right[rightPoint++];
             } else if (leftPoint != left.length) {
                 rsl[rslPoint++] = left[leftPoint++];
             } else {

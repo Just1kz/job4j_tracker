@@ -15,7 +15,7 @@ public class FI {
         Comparator<Attachment> comparator = (left, right) -> left.getSize() - right.getSize();
         Arrays.sort(atts, comparator);
 
-        Student [] rsl = {new Student("Petr", 6.5),
+        Student[] rsl = {new Student("Petr", 6.5),
                                         new Student("Anton", 5.5),
                                         new Student("Stas", 7.5)
         };

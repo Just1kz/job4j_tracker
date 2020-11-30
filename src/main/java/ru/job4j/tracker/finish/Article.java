@@ -1,4 +1,4 @@
-package ru.job4j.tracker.rslTaskOfLvl1;
+package ru.job4j.tracker.finish;
 
 import java.util.Arrays;
 import java.util.HashSet;
