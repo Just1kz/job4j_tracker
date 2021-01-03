@@ -7,8 +7,6 @@ import java.util.function.Predicate;
 
 public class EasyStream<T> {
     private List<T> data;
-    private Predicate<T> filter;
-    private Function<T, T> fun;
 
     public static <T> EasyStream<T> of(List<T> source) {
         return new Builder<T>()
@@ -31,29 +29,11 @@ public class EasyStream<T> {
     }
 
     public List<T> collect() {
-        List<T> list = new ArrayList<>();
-        if (filter != null) {
-            for (T rsl : data) {
-                if (filter.test(rsl)) {
-                    list.add(rsl);
-                }
-            }
-        }
-        if (fun != null) {
-            for (T rsl : data) {
-                list.add(fun.apply(rsl));
-            }
-        }
-        if (filter != null && fun != null) {
-            list.addAll(data);
-        }
-        return list;
+        return data;
     }
 
     static class Builder<T> {
         private List<T> source;
-        private Predicate<T> filter;
-        private Function<T, T> fun;
 
         Builder<T> source(List<T> list) {
             this.source = list;
@@ -61,20 +41,28 @@ public class EasyStream<T> {
         }
 
         Builder<T> map(Function<T, T> fun) {
-            this.fun = fun;
+            List<T> rsl = new ArrayList<>();
+            for (T t : source) {
+                rsl.add(fun.apply(t));
+            }
+            this.source = rsl;
             return this;
         }
 
         Builder<T> filter(Predicate<T> filter) {
-            this.filter = filter;
+            List<T> rsl = new ArrayList<>();
+            for (T t : source) {
+                if (filter.test(t)) {
+                    rsl.add(t);
+                }
+            }
+            this.source = rsl;
             return this;
         }
 
         EasyStream<T> build() {
             EasyStream<T> stream = new EasyStream<T>();
             stream.data = source;
-            stream.filter = filter;
-            stream.fun = fun;
             return stream;
         }
     }
