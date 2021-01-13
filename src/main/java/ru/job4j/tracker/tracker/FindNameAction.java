@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.tracker;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class FindNameAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
          String name = input.askStr("Enter name to search: ");
          List<Item> showAllNameSearch = tracker.findByName(name);
          if (showAllNameSearch.size() > 0) {

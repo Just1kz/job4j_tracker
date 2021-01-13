@@ -1,20 +1,20 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.tracker;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class Tracker {
+public class MemTracker {
     private final List<Item> items = new ArrayList<>(10);
     private int ids = 1;
     private int size = 0;
 
     public Item add(Item item) {
-        item.setId(ids++);
+        item.setId(String.valueOf(ids++));
         items.add(size++, item);
         return item;
     }
 
-    public Item findById(int id) {
+    public Item findById(String id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
@@ -34,11 +34,11 @@ public class Tracker {
         return items;
     }
 
-    private int indexOf(int id) {
+    private int indexOf(String id) {
         int rsl = -1;
         if (!items.isEmpty()) {
             for (int index = 0; index < size; index++) {
-                if (items.get(index).getId() == id) {
+                if (items.get(index).getId().equals(id)) {
                     rsl = index;
                     break;
                 }
@@ -47,7 +47,7 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean replace(int id, Item item) {
+    public boolean replace(String id, Item item) {
         int index = indexOf(id);
             if (index != -1) {
                 item.setId(id);
@@ -56,7 +56,7 @@ public class Tracker {
         return index != -1;
     }
 
-    public boolean delete(int id) {
+    public boolean delete(String id) {
         int index = indexOf(id);
         if (index != -1) {
         items.remove(index);

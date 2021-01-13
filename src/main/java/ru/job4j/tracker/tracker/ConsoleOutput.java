@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.tracker;
 
 public class ConsoleOutput implements Output {
     @Override

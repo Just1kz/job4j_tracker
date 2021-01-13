@@ -1,6 +1,8 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.tracker.*;
+
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -12,7 +14,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Replaced item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
@@ -38,7 +40,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Deleted item"));
 
         Input in = new StubInput(
@@ -58,7 +60,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         UserAction[] actions = {
                 new ExitAction()
         };
@@ -73,7 +75,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", "1"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         UserAction[] actions = {
                 new ShowAllAction(),
                 new ExitAction()
@@ -90,7 +92,7 @@ public class StartUITest {
     @Test
     public void whenFindByIdAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Find ID"));
         Input in = new StubInput(
                 new String[]{"0", String.valueOf(item.getId()), "1"}
@@ -112,7 +114,7 @@ public class StartUITest {
     @Test
     public void whenFindByNameAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Find Name"));
         Input in = new StubInput(
                 new String[]{"0", String.valueOf(item.getName()), "1"}
@@ -137,7 +139,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"9", "0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         UserAction[] actions = {
                 new ExitAction()
         };

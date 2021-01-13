@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.tracker;
 
 public class EditAction implements UserAction {
     private final Output out;
@@ -13,11 +13,11 @@ public class EditAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         int id = Integer.parseInt(input.askStr("Enter id, where are you want replace your item: "));
          String name = input.askStr("Enter name, what you want replace: ");
          Item item = new Item(name);
-         if (tracker.replace(id, item)) {
+         if (tracker.replace(String.valueOf(id), item)) {
              out.println("replaces completed");
          } else {
              out.println("Ошибка при вводе данных, Имя заявки или ID не существует. "
