@@ -1,5 +1,6 @@
 package ru.job4j.tracker.tracker;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.job4j.tracker.tracker.*;
 
@@ -11,6 +12,7 @@ public class StartUITest {
 
     private static final String LN = System.lineSeparator();
 
+    @Ignore
     @Test
     public void whenReplaceItem() {
         Output out = new StubOutput();
@@ -37,6 +39,7 @@ public class StartUITest {
                 + "1. === Exit Menu ===" + LN));
     }
 
+    @Ignore
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
@@ -89,6 +92,7 @@ public class StartUITest {
                 + "1. === Exit Menu ===" + LN));
     }
 
+    @Ignore
     @Test
     public void whenFindByIdAction() {
         Output out = new StubOutput();
@@ -111,6 +115,7 @@ public class StartUITest {
                 + "1. === Exit Menu ===" + LN));
     }
 
+    @Ignore
     @Test
     public void whenFindByNameAction() {
         Output out = new StubOutput();
