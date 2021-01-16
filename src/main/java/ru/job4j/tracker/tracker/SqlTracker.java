@@ -31,7 +31,6 @@ public class SqlTracker implements Store {
                     config.getProperty("username"),
                     config.getProperty("password")
             );
-            //return this.connection;
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
