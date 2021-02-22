@@ -12,7 +12,7 @@ public class DeleteActionTest {
     @Test
     public void execute() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        Store tracker = new MemTracker();
         tracker.add(new Item("New item"));
 
         DeleteAction rep = new DeleteAction(out);

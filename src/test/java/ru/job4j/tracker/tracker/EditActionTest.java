@@ -12,7 +12,7 @@ public class EditActionTest {
     @Test
     public void execute() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
+        Store tracker = new MemTracker();
         tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         EditAction rep = new EditAction(out);
@@ -26,6 +26,6 @@ public class EditActionTest {
 
         String ln = System.lineSeparator();
         assertThat(out.toString(), is("replaces completed" + ln));
-        assertThat(tracker.findAll().get(13).getName(), is(replacedName));
+        assertThat(tracker.findAll().get(0).getName(), is(replacedName));
     }
 }

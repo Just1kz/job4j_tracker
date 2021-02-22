@@ -12,8 +12,8 @@ public class FindNameActionTest {
     @Test
     public void execute() {
         Output out = new StubOutput();
-        Store tracker = new SqlTracker();
-        tracker.add(new Item("FindNameAction"));
+        Store store = new MemTracker();
+        store.add(new Item("FindNameAction"));
 
         FindNameAction rep = new FindNameAction(out);
 
@@ -21,9 +21,9 @@ public class FindNameActionTest {
 
         when(input.askStr(any(String.class))).thenReturn("FindNameAction");
 
-        rep.execute(input, tracker);
+        rep.execute(input, store);
 
-        Item rsl = new Item("36", "FindNameAction");
+        Item rsl = new Item("1", "FindNameAction");
 
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(rsl.toString() + ln));
