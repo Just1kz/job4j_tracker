@@ -6,13 +6,13 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.internal.matchers.Null;
 import ru.job4j.tracker.tracker.Item;
 import ru.job4j.tracker.tracker.MemTracker;
 
 import static org.hamcrest.core.IsNull.nullValue;
 
 public class TrackerTest {
-
 
     @Test
     public void whenReplace() {
@@ -25,14 +25,13 @@ public class TrackerTest {
         assertThat(tracker.findById(0).getName(), is("Bug with description"));
     }
 
-
     @Test
     public void whenDelete() {
         MemTracker tracker = new MemTracker();
         Item bug = new Item("Bug");
         tracker.add(bug);
         Integer id = bug.getId();
-        tracker.delete(id);
-        assertThat(tracker.findById(id), is(nullValue()));
+        tracker.delete(0);
+        assertThat(tracker.findById(0), is(nullValue()));
     }
 }

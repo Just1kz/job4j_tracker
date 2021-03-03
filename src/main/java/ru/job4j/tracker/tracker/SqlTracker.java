@@ -60,7 +60,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public boolean replace(Integer id, Item item) {
+    public boolean replace(int id, Item item) {
         boolean result = false;
         try (PreparedStatement ps = connection.prepareStatement(
                 "update items set name = ? where id = ?;")) {
@@ -74,7 +74,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(int id) {
         boolean result = false;
         try (PreparedStatement ps = connection.prepareStatement("delete from items where id = ?")) {
             ps.setInt(1, id);
@@ -124,7 +124,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public Item findById(Integer id) {
+    public Item findById(int id) {
         Item result = null;
         try (PreparedStatement ps = connection.prepareStatement(
                 "select * from items where id = ?;")) {
