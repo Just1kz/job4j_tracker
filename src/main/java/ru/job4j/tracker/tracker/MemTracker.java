@@ -13,14 +13,14 @@ public class MemTracker implements Store {
     }
 
     public Item add(Item item) {
-        item.setId(String.valueOf(ids++));
+        item.setId(ids++);
         items.add(size++, item);
         return item;
     }
 
-    public Item findById(String id) {
-        int index = indexOf(id);
-        return index != -1 ? items.get(index) : null;
+    public Item findById(Integer id) {
+        //int index = indexOf(id);
+        return id != -1 ? items.get(id) : null;
     }
 
     public List<Item> findByName(String key) {
@@ -51,21 +51,21 @@ public class MemTracker implements Store {
         return rsl;
     }
 
-    public boolean replace(String id, Item item) {
-        int index = indexOf(id);
-            if (index != -1) {
+    public boolean replace(Integer id, Item item) {
+//        int index = indexOf(id);
+            if (id != -1) {
                 item.setId(id);
-                items.set(index, item);
+                items.set(id, item);
             }
-        return index != -1;
+        return id != -1;
     }
 
-    public boolean delete(String id) {
-        int index = indexOf(id);
-        if (index != -1) {
-        items.remove(index);
+    public boolean delete(Integer id) {
+        //int index = indexOf(id);
+        if (id != -1) {
+        items.remove(id);
         }
-        return index != -1;
+        return id != -1;
     }
 
     @Override

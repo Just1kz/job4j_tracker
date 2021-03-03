@@ -23,7 +23,7 @@ public class FindNameActionTest {
 
         rep.execute(input, store);
 
-        Item rsl = new Item("1", "FindNameAction");
+        Item rsl = new Item(1, "FindNameAction");
 
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(rsl.toString() + ln));

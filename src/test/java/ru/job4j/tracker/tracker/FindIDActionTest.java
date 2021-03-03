@@ -23,7 +23,7 @@ public class FindIDActionTest {
 
         rep.execute(input, tracker);
 
-        Item rsl = new Item("1", "FindIDAction");
+        Item rsl = new Item(1, "FindIDAction");
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(rsl.toString() + ln));
     }

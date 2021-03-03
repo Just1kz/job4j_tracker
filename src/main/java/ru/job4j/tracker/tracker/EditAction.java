@@ -17,7 +17,7 @@ public class EditAction implements UserAction {
         int id = input.askInt("Enter id, where are you want replace your item: ");
          String name = input.askStr("Enter name, what you want replace: ");
          Item item = new Item(name);
-         if (tracker.replace(String.valueOf(id), item)) {
+         if (tracker.replace(id, item)) {
              out.println("replaces completed");
          } else {
              out.println("Ошибка при вводе данных, Имя заявки или ID не существует. "

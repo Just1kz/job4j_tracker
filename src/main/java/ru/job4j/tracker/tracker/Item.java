@@ -1,23 +1,33 @@
 package ru.job4j.tracker.tracker;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "items")
 public class Item implements Comparable<Item> {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
     public Item(String name) {
         this.name = name;
     }
 
-    public Item(String id, String name) {
+    public Item(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public Item() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,6 +52,6 @@ public class Item implements Comparable<Item> {
 
     @Override
     public int compareTo(Item another) {
-        return Integer.compare(Integer.parseInt(id), Integer.parseInt(another.id));
+        return Integer.compare(id, another.id);
     }
 }

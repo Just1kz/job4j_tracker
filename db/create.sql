@@ -1,4 +1,4 @@
 create table IF NOT EXISTS items (
                                      id serial primary key not null,
-                                     name text
+                                     name varchar(2000)
 );
