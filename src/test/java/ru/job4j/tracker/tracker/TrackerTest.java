@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 
 public class TrackerTest {
 
-    @Ignore
+
     @Test
     public void whenReplace() {
         MemTracker tracker = new MemTracker();
@@ -21,11 +21,11 @@ public class TrackerTest {
         tracker.add(bug);
         Integer id = bug.getId();
         Item bugWithDesc = new Item("Bug with description");
-        tracker.replace(id, bugWithDesc);
-        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+        tracker.replace(0, bugWithDesc);
+        assertThat(tracker.findById(0).getName(), is("Bug with description"));
     }
 
-    @Ignore
+
     @Test
     public void whenDelete() {
         MemTracker tracker = new MemTracker();

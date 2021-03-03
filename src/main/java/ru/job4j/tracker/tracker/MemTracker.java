@@ -19,8 +19,7 @@ public class MemTracker implements Store {
     }
 
     public Item findById(Integer id) {
-        //int index = indexOf(id);
-        return id != -1 ? items.get(id) : null;
+        return id <= items.size() && !items.isEmpty() ? items.get(id) : null;
     }
 
     public List<Item> findByName(String key) {
@@ -52,12 +51,12 @@ public class MemTracker implements Store {
     }
 
     public boolean replace(Integer id, Item item) {
-//        int index = indexOf(id);
-            if (id != -1) {
+            if (id < items.size()) {
                 item.setId(id);
                 items.set(id, item);
+                return true;
             }
-        return id != -1;
+        return false;
     }
 
     public boolean delete(Integer id) {
@@ -66,6 +65,10 @@ public class MemTracker implements Store {
         items.remove(id);
         }
         return id != -1;
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 
     @Override
