@@ -25,5 +25,11 @@
         <mapping class="ru.job4j.tracker.hibernate.manytomany.Author" />
         <mapping class="ru.job4j.tracker.hibernate.manytomany.Book" />
 
+        <mapping class="ru.job4j.tracker.hibernate.lazyex.Category" />
+        <mapping class="ru.job4j.tracker.hibernate.lazyex.Task" />
+
+        <mapping class="ru.job4j.tracker.hibernate.lazyex.homework.Mark" />
+        <mapping class="ru.job4j.tracker.hibernate.lazyex.homework.Model" />
+
     </session-factory>
 </hibernate-configuration>
