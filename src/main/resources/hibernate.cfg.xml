@@ -18,5 +18,9 @@
 
         <mapping class="ru.job4j.tracker.config.Car" />
         <mapping class="ru.job4j.tracker.tracker.Item" />
+
+        <mapping class="ru.job4j.tracker.hibernate.onetomany.ModelCar" />
+        <mapping class="ru.job4j.tracker.hibernate.onetomany.MarkCar" />
+
     </session-factory>
 </hibernate-configuration>
