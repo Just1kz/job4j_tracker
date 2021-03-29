@@ -31,5 +31,6 @@
         <mapping class="ru.job4j.tracker.hibernate.lazyex.homework.Mark" />
         <mapping class="ru.job4j.tracker.hibernate.lazyex.homework.Model" />
 
+        <mapping class="ru.job4j.tracker.hibernate.hql.Candidate" />
     </session-factory>
 </hibernate-configuration>
