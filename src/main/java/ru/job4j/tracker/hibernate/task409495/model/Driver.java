@@ -14,6 +14,12 @@ public class Driver {
 
     private String name;
 
+    public static Driver of(String name) {
+        Driver driver = new Driver();
+        driver.name = name;
+        return driver;
+    }
+
     public int getId() {
         return id;
     }

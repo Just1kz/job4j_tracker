@@ -24,6 +24,12 @@ public class Car {
             @JoinColumn(name = "carX_id", nullable = false, updatable = false) })
     private List<Driver> driverSet = new ArrayList<>();
 
+    public static Car of(String name) {
+        Car car =  new Car();
+        car.name = name;
+        return car;
+    }
+
     public int getId() {
         return id;
     }
