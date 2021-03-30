@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "candidate")
-public class Candidate {
+@Table(name = "posts")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -13,22 +13,14 @@ public class Candidate {
     @JoinColumn(name = "name")
     private String name;
 
-    @JoinColumn(name = "experience")
-    private double experience;
-    //указывать количество лет опыта
-
     @JoinColumn(name = "salary")
     private double salary;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private PostsBD postsBD;
-
-    public static Candidate of(String name, double experience, double salary) {
-        Candidate candidate = new Candidate();
-        candidate.name = name;
-        candidate.experience = experience;
-        candidate.salary = salary;
-        return candidate;
+    public static Post of(String name, double salary) {
+        Post post = new Post();
+        post.name = name;
+        post.salary = salary;
+        return post;
     }
 
     public int getId() {
@@ -47,14 +39,6 @@ public class Candidate {
         this.name = name;
     }
 
-    public double getExperience() {
-        return experience;
-    }
-
-    public void setExperience(double experience) {
-        this.experience = experience;
-    }
-
     public double getSalary() {
         return salary;
     }
@@ -71,8 +55,8 @@ public class Candidate {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Candidate candidate = (Candidate) o;
-        return id == candidate.id;
+        Post post = (Post) o;
+        return id == post.id;
     }
 
     @Override
@@ -82,7 +66,14 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return String.format("Candidate: id=%s, name=%s, experience=%s, salary=%s, PostsBD=%s",
-                id, name, experience, salary, postsBD);
+        return "Post{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", salary="
+                + salary
+                + '}';
     }
 }
