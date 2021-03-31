@@ -1,6 +1,7 @@
 package ru.job4j.tracker.hibernate.integrationtest;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.internal.matchers.Or;
@@ -38,6 +39,11 @@ public class OrdersStoreTest {
             e.printStackTrace();
         }
         pool.getConnection().prepareStatement(builder.toString()).executeUpdate();
+    }
+
+    @After
+    public void runAfterEveryTest() throws SQLException {
+        pool.getConnection().prepareStatement("DROP table orders").execute();
     }
 
     @Test
