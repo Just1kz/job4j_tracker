@@ -51,7 +51,7 @@ public class OrdersStoreTest {
         OrdersStore store = new OrdersStore(pool);
         store.save(Order.of("name1", "description1"));
         Order order1 = store.findByName("name1");
-        assertThat(order1 != null, is(Boolean.TRUE));
+        assertNotNull(order1);
     }
 
     @Test
