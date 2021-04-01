@@ -28,22 +28,22 @@ public class HbmRun {
 //
 //            //Select
 //
-//            Query query = session.createQuery("from Candidate");
+//            Query showAll = session.createQuery("from Candidate");
 //            for (Object st : query.list()) {
 //                System.out.println(st);
 //            }
 //
-//            Query query2 = session.createQuery("from Candidate s where s.id = :Id");
+//            Query findByIdFirst = session.createQuery("from Candidate s where s.id = :Id");
 //            query2.setParameter("Id", 1);
 //            System.out.println(query2.uniqueResult());
 //
-//            Query query5 = session.createQuery("from Candidate s where s.name = :Name");
+//            Query findByName = session.createQuery("from Candidate s where s.name = :Name");
 //            query5.setParameter("Name", "Anton");
 //            System.out.println(query5.uniqueResult());
 //
 //
 //            //Update
-//            Query query3 = session.createQuery(
+//            Query update = session.createQuery(
 //                    "update Candidate s set s.experience = :Experience, s.salary =
 //                    :Salary where s.id = :Id"
 //            );
@@ -61,7 +61,7 @@ public class HbmRun {
 //                    .executeUpdate();
 //
 //
-//            Query query4 = session.createQuery("from Candidate s where s.id = :Id");
+//            Query findByIdSecond = session.createQuery("from Candidate s where s.id = :Id");
 //            query4.setParameter("Id", 1);
 //            System.out.println(query4.uniqueResult());
 //
