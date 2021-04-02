@@ -28,7 +28,7 @@ public class HbmTrackerTest {
         hbmTracker.add(item);
         hbmTracker.add(item2);
         boolean rsl = hbmTracker.replace(1, item2);
-        assertThat(rsl, is(Boolean.TRUE));
+        assertTrue(rsl);
         assertThat(hbmTracker.findById(1).toString(), is(item2.toString()));
     }
 
